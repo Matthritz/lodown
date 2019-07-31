@@ -13,7 +13,7 @@
  * @return {collection} array or object returned, modified by our function
  */
 
-function each(collection, action) {
+const each = (collection, action) => {
     if(Array.isArray(collection)) {
         for(var i = 0; i < collection.length; i++) {
             action(collection[i], i, collection);
@@ -23,7 +23,7 @@ function each(collection, action) {
             action(collection[key], key, collection);
         }
     }
-}
+};
 module.exports.each = each;
 
 /**
@@ -34,22 +34,22 @@ module.exports.each = each;
  * @return {Any value} value: returns value unchanged
  */
  
-function identity(value) {
+const identity = (value) => {
     return value;
-}
+};
 module.exports.identity = identity;
 
 /** typeOf
 * 
 * Takes a value as a parameter and returns its value type, 
-* (string, number, array, etc..) or null if the parameter has no value
+* (string, number, array, etc..)
 * 
 * @param {any value} value: any value to be checked
 * 
 * @return param value returned as string of that value
 */
 
-function typeOf(value) {
+const typeOf = (value) => {
     if (Array.isArray(value)) {
         return 'array';
     } else if (value === null) {
@@ -57,12 +57,12 @@ function typeOf(value) {
     } else {
         return typeof value;
     }
-}
+};
 module.exports.typOf = typeOf;
 
 /** first
 * Arguments:
-*  takes an array and returns the first however many number items of said array,
+*  takes an array and returns the first through however many number items of said array,
 * if our argument is not an array returns an array literal.
 * 
 * @param {an array}  array: an array to iterate through
@@ -71,7 +71,7 @@ module.exports.typOf = typeOf;
 * @return  the first index of an array or the first element to match our number
 */
 
-function first(array, number) {
+const first = (array, number) => {
     if (!Array.isArray(array) || number < 0) {
         return [];
     } else if (number === undefined || typeof number !== 'number') {
@@ -79,8 +79,8 @@ function first(array, number) {
     } else {
         return array.slice(0, number);
     }
-        
-    }
+};
+
 module.exports.first = first;
 
 /** last
@@ -93,22 +93,17 @@ module.exports.first = first;
 * @return  the last index of an array or the last element to match our number 
 */
 
-function last(array, number) {
+const last = (array, number) => {
      if (!Array.isArray(array) || number < 0) {
         return [];
-     }
-      if (number > array.length) {
+    } if (number > array.length) {
           return array;
-      }   
-      
-    if (number === undefined || isNaN(number)) {
+    } if (number === undefined || isNaN(number)) {
         return array[array.length-1];
     } else { 
         return array.slice(array.length-number);
-        
     }
-        
-}
+};
 module.exports.last = last;
 
 /** indexOf
@@ -121,13 +116,13 @@ module.exports.last = last;
  * @return the index of our array that holds our value, or -1 if no match 
 */
 
-function indexOf(array, value) {
+const indexOf = (array, value) => {
     for (let i = 0; i < array.length; i++) {
         if (array[i] === value) {
         return i;
     }
 } return -1;
-}
+};
 module.exports.indexOf = indexOf;
 
 /** contains
@@ -140,12 +135,12 @@ module.exports.indexOf = indexOf;
 * @return  returns true or false based if the value is found in the array or not
 */
 
-function contains(array, value) {
+const contains = (array, value) => {
   let result = false;
   for (let i = 0; i < array.length; i++) {
       result = value === array[i] ? true : result;
           }  return result;
-}
+};
 module.exports.contains = contains;
 
 /** unique
@@ -157,16 +152,13 @@ module.exports.contains = contains;
 * @return {an array} result: returns a new array with no duplicate values
 */
 
-function unique(array) {
-  const result = [];
+const unique = (array) => {
+  let result = [];
  for (let i = 0; i < array.length; i++)
   if (indexOf(result, array[i]) === -1) {
           result.push(array[i]);
-    
-  
-  }    return result;
-  
-}
+    }    return result;
+ };
 module.exports.unique = unique;
 
 /** filter: Designed to filter values in a collection based on a test. 
@@ -184,17 +176,15 @@ module.exports.unique = unique;
   * The Array will contain only the values that passed the test.
 */
 
-function filter(array, action) {
-    const result = [];
+const filter = (array, action) => {
+    let result = [];
     each(array, function(element, index, arr) {
         if (action(element, index, arr)) {
      result.push(element);   
     }
-        
     });
-      
- return result;
-}
+      return result;
+};
 module.exports.filter = filter;
 
 /** reject
@@ -210,17 +200,15 @@ module.exports.filter = filter;
 * @return a new array with elements modified by function
 */
 
-function reject(array, action) {
-    const result = [];
+const reject = (array, action) => {
+    let result = [];
     each(array, function(element, index, arr) {
         if (action(element, index, arr) === false) {
      result.push(element);   
     }
-        
     });
-      
- return result;
-}
+      return result;
+};
 module.exports.reject = reject;
 
 /** partition
@@ -238,8 +226,8 @@ module.exports.reject = reject;
 * and one with truthy values
 */
 
-function partition(array, action){
-   const result = [[],[]];
+const partition = (array, action) => {
+   let result = [[],[]];
        each(array, function(element, index, arr){
            if (action(element, index, arr)){
                result[0].push(element);
@@ -251,7 +239,7 @@ function partition(array, action){
            }
        });
        return result;
-}
+};
 module.exports.partition = partition;
 
 /** map
@@ -267,15 +255,15 @@ module.exports.partition = partition;
 * @return new array with modified function call on all elements
 */
 
-function map(collection, action) {
-     const result = [];
+const map = (collection, action) => {
+     let result = [];
      each(collection, function(element, index, arr) {
            if (action(element, index, arr)) {
                result.push(action(element, index, arr));
            }
 });
  return result;
-}
+};
 module.exports.map = map;
 
 /** pluck
@@ -289,10 +277,10 @@ module.exports.map = map;
 * @return an array containing values that match prop param
 */
 
-function pluck(arr, prop) {
+const pluck = (arr, prop) => {
   return map(arr, function(element) {
     return element[prop];  });
-  }
+  };
 module.exports.pluck = pluck;
 
 /** every
@@ -312,7 +300,7 @@ module.exports.pluck = pluck;
 * 
 */
 
-function every(collection, action) {
+const every = (collection, action) => {
    let newArray = [];
   each(collection, function(element, index, container){
       if (action === undefined && element !== false) {
@@ -334,7 +322,7 @@ function every(collection, action) {
   } else {
       return true;
   }
-}
+};
 module.exports.every = every;
 
 /** some
@@ -352,7 +340,7 @@ module.exports.every = every;
 * @return returns false unless at least one element in collection has truthiness
 */
 
-function some(collection, action) {
+const some = (collection, action) => {
     let newArray = [];
   each(collection, function(element, index, container){
       if (action === undefined && element) {
@@ -374,7 +362,7 @@ function some(collection, action) {
   } else {
       return false;
   }
-}
+};
 module.exports.some = some;
 
 /** reduce
@@ -394,7 +382,7 @@ module.exports.some = some;
 * 
 */
 
- function reduce(collection, action, seed) {
+ const reduce = (collection, action, seed) => {
     var prevResult;
    each(collection, function(element, index, collection) {
        if (index === 0 && seed || seed === 0) {
@@ -406,8 +394,7 @@ module.exports.some = some;
            prevResult = action(prevResult, element, index);
     } 
    });  return prevResult;
-   
- }
+};
 module.exports.reduce = reduce;
 /** extend
 * Takes two or more object as arguments
@@ -419,11 +406,11 @@ module.exports.reduce = reduce;
 * @return our first object with all other properties from other objects 
 */
 
-function extend(obj1, ...objs) {
+const extend = (obj1, ...objs) => {
 
    each(objs, function(element, index, objs) {
    Object.assign(obj1, objs[index]);
    });
    return obj1;
-}
+};
 module.exports.extend = extend;
