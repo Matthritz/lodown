@@ -46,7 +46,7 @@ module.exports.identity = identity;
 * 
 * @param {any value} value: any value to be checked
 * 
-* @return param value returned as string of that value
+* @return {string} param value returned as string of that value
 */
 
 const typeOf = (value) => {
@@ -68,7 +68,7 @@ module.exports.typOf = typeOf;
 * @param {an array}  array: an array to iterate through
 * @param {a number}  number: a number to check against the array
 * 
-* @return  the first index of an array or the first element to match our number
+* @return  {array} the first index of an array or the first element to match our number
 */
 
 const first = (array, number) => {
@@ -90,7 +90,7 @@ module.exports.first = first;
 * @param {an array} array: The collection over which to iterate.
 * @param {a number}  number:  this number checks against our array
 * 
-* @return  the last index of an array or the last element to match our number 
+* @return  {array} the last index of an array or the last element to match our number 
 */
 
 const last = (array, number) => {
@@ -113,7 +113,7 @@ module.exports.last = last;
  * @param {an array} array: The collection over which to iterate.
  * @param {any value} value:   what to check for in array
  * 
- * @return the index of our array that holds our value, or -1 if no match 
+ * @return {number} the index of our array that holds our value, or -1 if no match 
 */
 
 const indexOf = (array, value) => {
@@ -132,7 +132,7 @@ module.exports.indexOf = indexOf;
 * @param {an array} array: The collection over which to iterate.
 * @param {any value} value: what to check for in our array
 * 
-* @return  returns true or false based if the value is found in the array or not
+* @return  {boolean} true or false based if the value is found in the array or not
 */
 
 const contains = (array, value) => {
@@ -197,7 +197,7 @@ module.exports.filter = filter;
 * @param {a function} action: The Function to be applied to each value in 
 * the collection. 
 * 
-* @return a new array with elements modified by function
+* @return {array} with elements not passed by the action function
 */
 
 const reject = (array, action) => {
@@ -222,8 +222,7 @@ module.exports.reject = reject;
 * @param {a function} action: The Function to be applied to each value in 
 * the collection. 
 * 
-* @return a new array of 2 sub arrays, one with falsey values, 
-* and one with truthy values
+* @return  {an array with 2 sub arrays}   the first with truthy values, and the other with falsey values
 */
 
 const partition = (array, action) => {
@@ -252,7 +251,7 @@ module.exports.partition = partition;
 * @param {a Function} action: The Function to be applied to each value in 
 *  the collection.
 * 
-* @return new array with modified function call on all elements
+* @return {array} new array with the action function call on all elements
 */
 
 const map = (collection, action) => {
@@ -274,7 +273,7 @@ module.exports.map = map;
 * @param {an Array} arr: The collection over which to iterate.
 * @param {a property}  prop: a property to get the value for comparison
 * 
-* @return an array containing values that match prop param
+* @return {array} an array containing values that match prop param
 */
 
 const pluck = (arr, prop) => {
@@ -337,7 +336,7 @@ module.exports.every = every;
 * @param {Function} action: The Function to be applied to each value in 
 * the collection. 
 * 
-* @return returns false unless at least one element in collection has truthiness
+* @return {boolean} returns false unless at least one element in collection has truthiness
 */
 
 const some = (collection, action) => {
@@ -378,7 +377,7 @@ module.exports.some = some;
 * the collection.
 * @param {a seed} seed: a starting point for function to cycle
 * 
-* @return - the single value of the function call on all elements in our collection
+* @return - {array, object, number or string} the single value of the function call on all elements in our collection
 * 
 */
 
@@ -403,7 +402,7 @@ module.exports.reduce = reduce;
 * 
 * @param {Object(s)} param takes two or more object
 * 
-* @return our first object with all other properties from other objects 
+* @return {object} our first object with all other properties from other objects 
 */
 
 const extend = (obj1, ...objs) => {
